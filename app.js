@@ -92,7 +92,7 @@ const checkMatch = (e) => {
     }
 
     //when win
-    if(sixPairs == 3) {
+    if(sixPairs == 6) {
         setTimeout(() => {
             MatchStatus("Yeah🤓, You Won", "😎 I Won")
         }, 1000)
