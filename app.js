@@ -1,7 +1,8 @@
 //grap elements
 const gameSection = document.querySelector(".game")
 const lives = document.querySelector(".lives")
-const restartBtn = document.querySelector("button")
+const restartBtn = document.querySelector(".restart")
+const readyBtn = document.querySelector(".ready")
 
 let liveCount = 6;
 lives.textContent = liveCount;
@@ -39,6 +40,10 @@ const generateCard = () => {
         card.setAttribute('name', item.name)
         // console.log(card)
         card.classList.add(item.name)
+        card.setAttribute('style', `background-color:${item.name}`)
+        // setTimeout(() => {
+        // }, 1000)
+        
         
         card.addEventListener('click', (e) => {
             let clickedCard = e.target
@@ -46,6 +51,14 @@ const generateCard = () => {
             checkMatch(e)
         })
     })
+
+    const allGameCards = document.querySelectorAll('.game div')
+    readyBtn.onclick = () => {
+        readyBtn.classList.add('readyBtnHide')
+        allGameCards.forEach(card => {
+            card.removeAttribute('style')
+        })
+    }
 }
 
 const checkMatch = (e) => {
@@ -65,7 +78,7 @@ const checkMatch = (e) => {
                     setTimeout(() => {
                         flippedCard.removeAttribute('style')
                         flippedCard.classList.remove('flipped')
-                    }, 1000)
+                    }, 200)
                 })
 
                 liveCount--
@@ -90,7 +103,7 @@ const checkMatch = (e) => {
 const MatchStatus = (text, emoji) => {
         document.querySelectorAll('div').forEach(item => item.remove())
         gameSection.textContent = emoji
-        gameSection.style.fontSize = '8rem'
+        gameSection.style.fontSize = '4rem'
         window.alert(text)
         restartBtn.classList.add('appearBtn')
         liveCount = 6
@@ -100,6 +113,7 @@ const MatchStatus = (text, emoji) => {
             gameSection.textContent = ''
             generateCard()
             restartBtn.classList.remove('appearBtn')
+            readyBtn.classList.remove('readyBtnHide')
         }
 }
 

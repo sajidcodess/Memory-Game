@@ -33,7 +33,7 @@ section > div {
     cursor: pointer;
 }
 
-.restart {
+.btn {
     border: none;
     border-radius: 5px;
     padding: .5rem 1rem;
@@ -41,11 +41,17 @@ section > div {
     color: #fff;
     cursor: pointer;
     font-family: inherit;
-    display: none;
 }
 
+.restart{
+    display: none;
+}
 .appearBtn {
     display: block;
+}
+
+.readyBtnHide {
+    display: none;
 }
 
 
