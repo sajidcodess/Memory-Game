@@ -4,7 +4,7 @@ const lives = document.querySelector(".lives")
 const restartBtn = document.querySelector(".restart")
 const readyBtn = document.querySelector(".ready")
 
-let liveCount = 6;
+let liveCount = 3;
 lives.textContent = liveCount;
 
 let sixPairs = 0
@@ -41,8 +41,8 @@ const generateCard = () => {
         // console.log(card)
         card.classList.add(item.name)
         card.setAttribute('style', `background-color:${item.name}`)
-        // setTimeout(() => {
-        // }, 1000)
+       
+        card.style.pointerEvents = 'none'
         
         
         card.addEventListener('click', (e) => {
@@ -57,6 +57,7 @@ const generateCard = () => {
         readyBtn.classList.add('readyBtnHide')
         allGameCards.forEach(card => {
             card.removeAttribute('style')
+            card.style.pointerEvents = 'all'
         })
     }
 }
@@ -91,9 +92,9 @@ const checkMatch = (e) => {
     }
 
     //when win
-    if(sixPairs == 6) {
+    if(sixPairs == 3) {
         setTimeout(() => {
-            MatchStatus("Yeah🤓, I Win", "😎 I win")
+            MatchStatus("Yeah🤓, You Won", "😎 I Won")
         }, 1000)
         sixPairs = 0
     }
@@ -106,7 +107,7 @@ const MatchStatus = (text, emoji) => {
         gameSection.style.fontSize = '4rem'
         window.alert(text)
         restartBtn.classList.add('appearBtn')
-        liveCount = 6
+        liveCount = 3
         lives.textContent = liveCount
 
         restartBtn.onclick = () => {
