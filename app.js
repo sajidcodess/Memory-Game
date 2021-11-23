@@ -101,6 +101,8 @@ const checkMatch = (e) => {
 
 }
 
+console.log(sixPairs)
+
 const MatchStatus = (text, emoji) => {
         document.querySelectorAll('div').forEach(item => item.remove())
         gameSection.textContent = emoji
